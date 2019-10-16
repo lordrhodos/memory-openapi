@@ -1,0 +1,9 @@
+{
+  "title": "tag-item",
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "./card-response.v1.json"
+    }
+  }
+}

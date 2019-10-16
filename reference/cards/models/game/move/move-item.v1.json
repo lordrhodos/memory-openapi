@@ -1,0 +1,9 @@
+{
+  "title": "tag-item",
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "./move-response.v1.json"
+    }
+  }
+}

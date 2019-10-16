@@ -1,0 +1,9 @@
+{
+  "title": "tag-item",
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "./game-response.v1.json"
+    }
+  }
+}

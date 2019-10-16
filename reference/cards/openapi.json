@@ -1,0 +1,483 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Cards API",
+    "version": "1.0",
+    "description": "Simple API for a memory game",
+    "contact": {
+      "name": "Patrick",
+      "url": "https://rodacker.se",
+      "email": "memory-api@rodacker.de"
+    }
+  },
+  "servers": [
+  ],
+  "paths": {
+    "/cards": {
+      "get": {
+        "operationId": "listCards",
+        "summary": "list a collection of cards",
+        "description": "Retrieve all cards as collection",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/card/card-collection.v1.json"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "405": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "card"
+        ]
+      },
+      "post": {
+        "operationId": "createCard",
+        "summary": "create a new card",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/card/card-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/card/card.v1.json"
+              }
+            }
+          }
+        },
+        "description": "create a new card",
+        "tags": [
+          "card"
+        ]
+      }
+    },
+    "/cards/{cardId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/cardId"
+        }
+      ],
+      "get": {
+        "operationId": "retrieveCard",
+        "summary": "retrieve a card",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/card/card-item.v1.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "description": "get a single card",
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "card"
+        ]
+      },
+      "put": {
+        "operationId": "replaceCard",
+        "summary": "update a single card",
+        "description": "update an existing card by replacing it",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/card/card-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/card/card.v1.json"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "card"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteCard",
+        "summary": "delete a card",
+        "description": "delete an existing card",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "card"
+        ]
+      }
+    },
+    "/games": {
+      "post": {
+        "operationId": "createGame",
+        "summary": "create a new game",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/game/game-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/game/game.v1.json"
+              }
+            }
+          }
+        },
+        "description": "create a new game",
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/games/{gameId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/gameId"
+        }
+      ],
+      "get": {
+        "operationId": "retrieveGame",
+        "summary": "retrieve a game",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/game/game-item.v1.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "description": "get a single game",
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      },
+      "put": {
+        "operationId": "replaceGame",
+        "summary": "update a single game",
+        "description": "update an existing game by replacing it",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/game/game-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/game/game.v1.json"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteGame",
+        "summary": "delete a game",
+        "description": "delete an existing game",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/games/{gameId}/moves": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/gameId"
+        }
+      ],
+      "get": {
+        "operationId": "listMoves",
+        "summary": "list a collection of moves",
+        "description": "Retrieve all moves as collection",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/game/move/move-collection.v1.json"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "405": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      },
+      "post": {
+        "operationId": "createMove",
+        "summary": "create a new move for a game",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/game/move/move-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/game/move/move.v1.json"
+              }
+            }
+          }
+        },
+        "description": "create a new move for a game",
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/games/{gameId}/moves/{moveId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/gameId"
+        },
+        {
+          "$ref": "#/components/parameters/moveId"
+        }
+      ],
+      "get": {
+        "operationId": "retrieveMove",
+        "summary": "retrieve a move of a game",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/game/move/move-item.v1.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "description": "get a single move of a game",
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "http": {
+        "type": "http",
+        "scheme": "Bearer"
+      }
+    },
+    "parameters": {
+      "cardId": {
+        "in": "path",
+        "name": "cardId",
+        "description": "the card id (uuid)",
+        "schema": {
+          "$ref": "./models/id.v1.json"
+        },
+        "required": true
+      },
+      "gameId": {
+        "in": "path",
+        "name": "gameId",
+        "description": "the game id (uuid)",
+        "schema": {
+          "$ref": "./models/id.v1.json"
+        },
+        "required": true
+      },
+      "moveId": {
+        "in": "path",
+        "name": "moveId",
+        "description": "the game id (uuid)",
+        "schema": {
+          "$ref": "./models/id.v1.json"
+        },
+        "required": true
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "card",
+      "description": "a memory card"
+    },
+    {
+      "name": "game",
+      "description": "a memory game"
+    }
+  ]
+}

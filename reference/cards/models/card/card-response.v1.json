@@ -1,0 +1,11 @@
+{
+  "title": "tag-response",
+  "allOf": [
+    {
+      "$ref": "../id.v1.json"
+    },
+    {
+      "$ref": "./card.v1.json"
+    }
+  ]
+}
